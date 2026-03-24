@@ -115,6 +115,24 @@ Tipex leverages Tiptap's extension system for enhanced functionality. It comes w
 <Tipex {body} extensions={customExtensions} />
 ```
 
+### Base64 Images
+
+By default, base64-encoded images are **disabled** to avoid storage and performance issues when editor content is persisted to a backend. To enable base64 image pasting, configure the `Image` extension:
+
+```svelte
+<script lang="ts">
+	import { Tipex, defaultExtensions } from '@friendofsvelte/tipex';
+	import { Image } from '@tiptap/extension-image';
+
+	const extensions = [
+		...defaultExtensions.filter((ext) => ext.name !== 'image'),
+		Image.configure({ allowBase64: true }),
+	];
+</script>
+
+<Tipex {body} {extensions} />
+```
+
 ### Floating Menu
 
 The floating menu provides context-aware formatting options that appear when text is selected:
@@ -316,6 +334,18 @@ Access the editor instance and its content using Svelte 5 runes:
 	<summary>HTML Output</summary>
 	<pre>{htmlContent}</pre>
 </details>
+```
+
+## Security
+
+Tipex validates URLs with a whitelist approach (only `http:`, `https:`, `mailto:`, `tel:`, and single-slash relative paths are allowed), sets `rel="noopener noreferrer"` on all links, and disables base64 images by default.
+
+However, the `body` prop is passed directly to TipTap and is **not** sanitized by Tipex. If you accept HTML from untrusted sources (e.g. user-generated content from a database), sanitize it before passing it to the editor:
+
+```ts
+import DOMPurify from 'dompurify';
+
+const body = DOMPurify.sanitize(untrustedHTML);
 ```
 
 ## Documentation

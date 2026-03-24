@@ -34,11 +34,11 @@
 
 	function handleOpenLink() {
 		if (tipex instanceof Editor) {
-			window.open(
-				tipex.getAttributes('link').href,
-				'popup',
-				`width=700,height=900,location=0,top=0,right=0`
-			);
+			const href = tipex.getAttributes('link').href;
+			// Only allow http(s) — mailto/tel/relative paths aren't meaningful in a popup
+			if (typeof href === 'string' && /^https?:\/\//i.test(href)) {
+				window.open(href, 'popup', `width=700,height=900,location=0,top=0,right=0`);
+			}
 		}
 	}
 

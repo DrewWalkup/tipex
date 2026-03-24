@@ -8,7 +8,7 @@
 
 .tipex-editor.focused.focal {
 	@apply outline-none border-tipex-300/60 dark:border-tipex-600/60;
-	box-shadow: 0 0 0 2px rgb(var(--color-tipex-500) / 0.08);
+	box-shadow: 0 0 0 2px oklch(0.556 0 0 / 0.08);
 }
 
 .tipex-editor-wrap {

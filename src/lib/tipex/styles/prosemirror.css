@@ -6,7 +6,7 @@
 	/* Custom scrollbar styling for the editor section */
 	.tipex-editor-section {
 		scrollbar-width: thin;
-		scrollbar-color: rgb(var(--color-tipex-300)) transparent;
+		scrollbar-color: var(--color-tipex-300) transparent;
 	}
 
 	.tipex-editor-section::-webkit-scrollbar {
@@ -18,27 +18,27 @@
 	}
 
 	.tipex-editor-section::-webkit-scrollbar-thumb {
-		background-color: rgb(var(--color-tipex-300));
+		background-color: var(--color-tipex-300);
 		border-radius: var(--radius-tipex-sm);
 		border: 2px solid transparent;
 		background-clip: content-box;
 	}
 
 	.tipex-editor-section::-webkit-scrollbar-thumb:hover {
-		background-color: rgb(var(--color-tipex-400));
+		background-color: var(--color-tipex-400);
 	}
 
 	/* Dark mode scrollbar */
 	.dark .tipex-editor-section {
-		scrollbar-color: rgb(var(--color-tipex-600)) transparent;
+		scrollbar-color: var(--color-tipex-600) transparent;
 	}
 
 	.dark .tipex-editor-section::-webkit-scrollbar-thumb {
-		background-color: rgb(var(--color-tipex-600));
+		background-color: var(--color-tipex-600);
 	}
 
 	.dark .tipex-editor-section::-webkit-scrollbar-thumb:hover {
-		background-color: rgb(var(--color-tipex-500));
+		background-color: var(--color-tipex-500);
 	}
 
 	.tipex-editor-section .ProseMirror pre {
@@ -153,10 +153,10 @@
 		float: left;
 		height: 0;
 		pointer-events: none;
-		color: rgb(var(--color-tipex-400));
+		color: var(--color-tipex-400);
 	}
 
 	.dark .tipex-editor-section .ProseMirror .is-empty::before {
-		color: rgb(var(--color-tipex-500));
+		color: var(--color-tipex-500);
 	}
 }

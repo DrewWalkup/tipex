@@ -26,8 +26,8 @@
 				copySuccess = false;
 			}, 2000);
 			tipex?.chain().focus().run();
-		} catch (error) {
-			console.error('Failed to copy:', error);
+		} catch {
+			// Clipboard access not available
 		}
 	}
 </script>

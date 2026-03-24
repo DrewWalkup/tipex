@@ -12,16 +12,16 @@
 	async function handleEditLinkToggle() {
 		const currentHref = tipex?.getAttributes('link').href || '';
 
-		// Try to get URL from clipboard
 		let defaultValue = currentHref;
-		try {
-			const clipboardText = await navigator.clipboard.readText();
-			if (clipboardText && isValidURL(clipboardText.trim())) {
-				defaultValue = clipboardText.trim();
+		if (!currentHref) {
+			try {
+				const clipboardText = await navigator.clipboard.readText();
+				if (clipboardText && isValidURL(clipboardText.trim())) {
+					defaultValue = clipboardText.trim();
+				}
+			} catch (error) {
+				// Clipboard access not available
 			}
-		} catch (error) {
-			// Clipboard access failed, use current href
-			console.log('Clipboard access not available');
 		}
 
 		const newHref = prompt('Enter URL:', defaultValue);
@@ -46,7 +46,7 @@
 			url.startsWith('https://') ||
 			url.startsWith('mailto:') ||
 			url.startsWith('tel:') ||
-			url.startsWith('/')
+			(url.startsWith('/') && !url.startsWith('//'))
 		);
 	}
 </script>

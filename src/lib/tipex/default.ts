@@ -16,7 +16,7 @@ export const defaultExtensions = [
 		}
 	}),
 	Image.configure({
-		allowBase64: true
+		allowBase64: false
 	}),
 	Placeholder.configure({
 		showOnlyWhenEditable: false
